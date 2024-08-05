@@ -1,16 +1,16 @@
-verion:'3.8'
+version: '3.8'
 services:
   vprodb:
     build:
       context: ./Docker-files/db
     image:  kubevin/vprofiledb
-    container_nme: vprodb
+    container_name: vprodb
     ports:
       - "3306:3306"
     volumes:
       - vprodbdata:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD-vprodbpass
+      - MYSQL_ROOT_PASSWORD=vprodbpass
 
   vprocache01:
     image:  memcached
@@ -29,7 +29,7 @@ services:
     build:
       context: ./Docker-files/app
     image:  kubevin/vprofileapp
-    container_nme: vproapp
+    container_name: vproapp
     ports:
       - "8080:8080"
     volumes:
@@ -39,7 +39,7 @@ services:
     build:
       context: ./Docker-files/web
     image:  kubevin/vprofileweb
-    container_nme: vproweb
+    container_name: vproweb
     ports:
       - "80:80"
 
